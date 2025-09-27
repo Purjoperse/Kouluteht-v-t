@@ -8,11 +8,9 @@ namespace dvd
     {
         static void Main(string[] args)
         {
-            // Window setup
             Raylib.InitWindow(800, 450, "DVD Bouncer");
             Raylib.SetTargetFPS(60);
 
-            // Variables
             Vector2 position = new Vector2(100, 100);
             Vector2 direction = new Vector2(1, 1);   // start moving diagonally
             float speed = 200.0f;
@@ -27,13 +25,13 @@ namespace dvd
             {
                 float delta = Raylib.GetFrameTime();
 
-                // Update position
+                // se liikkuu!!
                 position += direction * speed * delta;
 
                 int width = Raylib.GetScreenWidth();
                 int height = Raylib.GetScreenHeight();
 
-                // Bounce horizontally
+                // Bojojoing
                 if (position.X + textSize.X >= width)
                 {
                     position.X = width - textSize.X;
@@ -45,7 +43,6 @@ namespace dvd
                     direction.X *= -1;
                 }
 
-                // Bounce vertically
                 if (position.Y + textSize.Y >= height)
                 {
                     position.Y = height - textSize.Y;
@@ -57,7 +54,7 @@ namespace dvd
                     direction.Y *= -1;
                 }
 
-                // Draw
+                // OMG Värejä!?!
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.BLACK);
                 Raylib.DrawTextEx(font, text, position, fontSize, spacing, Color.YELLOW);
